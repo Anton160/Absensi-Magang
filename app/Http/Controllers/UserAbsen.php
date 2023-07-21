@@ -92,6 +92,7 @@ class UserAbsen extends Controller
 
     public function submitCheckout(Request $request)
     {
+        
 
         $validateData['check_out'] = Carbon::now()->toTimeString();
 

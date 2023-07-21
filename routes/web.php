@@ -46,7 +46,7 @@ Route::put('/user-profile/edit/{user}',[\App\Http\Controllers\Dashboard::class,'
 
 
 Route::get('/check-out',[\App\Http\Controllers\UserAbsen::class,'check_out'])->middleware('auth');
-Route::put('/check-out',[\App\Http\Controllers\UserAbsen::class,'submitCheckout'])->middleware('auth');
+Route::put('/check-out',[\App\Http\Controllers\UserAbsen::class,'submitCheckout'])->middleware('auth','checkout');
 
 
 });

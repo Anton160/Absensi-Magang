@@ -98,7 +98,7 @@ class UserAccount extends Controller
 
 
 
-        
+
         if ($request->email != $user->email) {
             $rule['email'] = 'required|email|unique:users,email';
         }

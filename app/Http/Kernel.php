@@ -55,6 +55,7 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $middlewareAliases = [
+        'checkout' => \App\Http\Middleware\CheckOut::class,
         'banned'=>\App\Http\Middleware\CheckIsBanned::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'redirect'=> \App\Http\Middleware\RedirectToLogin::class,

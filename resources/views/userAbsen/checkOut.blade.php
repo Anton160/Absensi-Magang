@@ -1,6 +1,11 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
+@if (session()->has('check-out'))
+<div class="alert alert-success col-lg-8" role="alert">
+    {{ session('check-out') }}
+</div>
+@endif
 <div class="pt-3">
     @foreach ($attendances as $attendance)
     <div class="pt-4">
