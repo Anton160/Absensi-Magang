@@ -14,6 +14,10 @@
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
+/*
+//ini adalah kode yang harus aktifin di lingkungan server jika akses untuk user bukan berada di folder public
+$app->usePublicPath($app->basePath('public_html'));
+*/
 
 /*
 |--------------------------------------------------------------------------
