@@ -25,15 +25,7 @@
                     </div>
                 @enderror
             </div>
-            <div class="mb-3">
-                <label for="name" class="form-label">Latitude</label>
-                <input type="text" class="form-control" id="latitude" value="{{ $attendance->latitude }}" readonly>
-            </div>
-
-            <div class="mb-3">
-                <label for="name" class="form-label">Latitude</label>
-                <input type="text" class="form-control" id="logitude" value="{{ $attendance->longitude }}" readonly>
-            </div>
+            
 
 
             <div class="mb-3">
@@ -110,7 +102,7 @@
 
             <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" id="location" value="{{ $attendance->location }}"
+                <input type="text" class="form-control" id="location" value="{{ $attendance->latitude }},{{ $attendance->longitude}}"
                 readonly>
             </div>
 

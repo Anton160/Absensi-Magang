@@ -24,34 +24,37 @@ class ExportController extends Controller
 
         // Set judul kolom
         $sheet->setCellValue('A1', 'Nama');
-        $sheet->setCellValue('B1', 'Hadir');
-        $sheet->setCellValue('C1', 'Sakit');
-        $sheet->setCellValue('D1', 'Ijin');
-        $sheet->setCellValue('E1', 'Alpha');
-        $sheet->setCellValue('F1', 'Jam Masuk');
-        $sheet->setCellValue('G1', 'Jam Pulang');
-        $sheet->setCellValue('H1', 'Lokasi');
+        $sheet->setCellValue('D1', 'Hadir');
+        $sheet->setCellValue('E1', 'Sakit');
+        $sheet->setCellValue('F1', 'Ijin');
+        $sheet->setCellValue('G1', 'Alpha');
+        $sheet->setCellValue('H1', 'Masuk');
+        $sheet->setCellValue('I1', 'Pulang');
+        $sheet->setCellValue('J1', 'Lokasi');
+        $sheet->mergeCells('A1:C1');
 
         // Set nilai data
         $row = 2;
         foreach ($attendances as $attendance) {
             $sheet->setCellValue('A' . $row, $userData['name']);
-            $sheet->setCellValue('B' . $row, $attendance['present']);
-            $sheet->setCellValue('C' . $row, $attendance['sick']);
-            $sheet->setCellValue('D' . $row, $attendance['permission']);
-            $sheet->setCellValue('E' . $row, $attendance['notAbsent']);
-            $sheet->setCellValue('F' . $row, $attendance['check_in']);
-            $sheet->setCellValue('G' . $row, $attendance['check_out']);
-            $sheet->setCellValue('H' . $row, $attendance['location']);
+            $sheet->setCellValue('D' . $row, $attendance['present']);
+            $sheet->setCellValue('E' . $row, $attendance['sick']);
+            $sheet->setCellValue('F' . $row, $attendance['permission']);
+            $sheet->setCellValue('G' . $row, $attendance['notAbsent']);
+            $sheet->setCellValue('H' . $row, $attendance['check_in']);
+            $sheet->setCellValue('I' . $row, $attendance['check_out']);
+            $sheet->setCellValue('J' . $row, $attendance['latitude'] . ' , ' . $attendance['longitude']);
+            $sheet->mergeCells('A' . $row . ':C' . $row);
+            $sheet->mergeCells('J' . $row . ':L' . $row);
             $row++;
         }
 
         // hitung jumlah masuk,ijin sakit dll
         $sheet->setCellValue('A'.$row, 'total');
-        $sheet->setCellValue('B'.$row, $attendances->sum('present'));
-        $sheet->setCellValue('C'.$row, $attendances->sum('sick'));
-        $sheet->setCellValue('D'.$row, $attendances->sum('permission'));
-        $sheet->setCellValue('E'.$row, $attendances->sum('notAbsent'));
+        $sheet->setCellValue('D'.$row, $attendances->sum('present'));
+        $sheet->setCellValue('E'.$row, $attendances->sum('sick'));
+        $sheet->setCellValue('F'.$row, $attendances->sum('permission'));
+        $sheet->setCellValue('G'.$row, $attendances->sum('notAbsent'));
 
         // Buat objek Writer untuk menulis ke file XLSX
 
