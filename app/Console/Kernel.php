@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Jobs\AutoAttendance;
+use App\Jobs\AutoCheckout;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -18,6 +19,7 @@ class Kernel extends ConsoleKernel
         // yang kedua adalah indikator jam berapa
         // sisanya mengatur tanggal bulan dan tahun
         $schedule->job(new AutoAttendance)->cron('01 12 * * *');
+        $schedule->job(new AutoCheckout)->cron('30 18 * * *');
     }
 
     /**

@@ -22,7 +22,7 @@ class UserAbsen extends Controller
 
     public function store(Request $request)
     {
-        if($request->latitude === null){
+        if(is_null($request->latitude)){
             return redirect()->back()->with('location','Allow This Website to Access Your Location');
         }
 
