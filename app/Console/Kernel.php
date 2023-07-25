@@ -14,7 +14,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->job(new AutoAttendance)->cron('43 11 * * *');
+        // cron adalah format waktunya yang pertama adalah indikator menit berapa
+        // yang kedua adalah indikator jam berapa
+        // sisanya mengatur tanggal bulan dan tahun
+        $schedule->job(new AutoAttendance)->cron('01 12 * * *');
     }
 
     /**
