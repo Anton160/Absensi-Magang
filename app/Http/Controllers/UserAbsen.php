@@ -22,15 +22,15 @@ class UserAbsen extends Controller
 
     public function store(Request $request)
     {
-        if(($request->latitude OR $request->longitude) === null){
+        if($request->latitude === null){
             return redirect()->back()->with('location','Allow This Website to Access Your Location');
         }
 
         $validateData = $request->validate([
             'user_id' => 'required',
             'image' => 'required|image|file|max:2500',
-            //'latitude'=> 'required',
-            //'longitude'=> 'required'
+            'latitude'=> 'required',
+            'longitude'=> 'required'
         ]);
 
 
@@ -55,20 +55,6 @@ class UserAbsen extends Controller
             return redirect('/user-absen')->with('error', 'Error Occurred try Again');
         }
 
-
-        /*
-        aktifkan di server
-        $ip = $request->ip();
-        $location = GeoIP::getLocation($ip);
-        $validateData['latitude'] = $location->lat;
-        $validateData['longitude'] = $location->lon;
-        $validateData['location'] = $location->city . ', ' . $location->state_name . ', ' . $location->country;*/
-        /*
-        cadangan kalo terjadi error
-        $validateData['latitude'] = $location['lat'];
-        $validateData['longitude'] = $location['lon'];
-        $validateData['address'] = $location['city'] . ', ' . $location['state_name'] . ', ' . $location['country_name'];*/
-
         $validateData['check_in'] = Carbon::now()->toTimeString();
         Attendance::create($validateData);
 
@@ -92,7 +78,7 @@ class UserAbsen extends Controller
 
     public function submitCheckout(Request $request)
     {
-        
+
 
         $validateData['check_out'] = Carbon::now()->toTimeString();
 

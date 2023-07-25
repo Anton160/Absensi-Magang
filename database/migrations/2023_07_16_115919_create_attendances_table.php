@@ -16,9 +16,8 @@ return new class extends Migration
             $table->id('id');
             $table->foreignId('user_id');
             $table->string('image')->nullable()->unique();
-            $table->double('latitude', 10, 8)->default(-6.174395)->nullable();
-            $table->double('longitude', 11, 8)->default(106.822565)->nullable();
-            $table->string('location')->nullable();
+            $table->double('latitude', 10, 8)->nullable();
+            $table->double('longitude', 11, 8)->nullable();
             $table->boolean('present')->default(0);
             $table->boolean('sick')->default(0);
             $table->boolean('permission')->default(0);
