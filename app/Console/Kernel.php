@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->job(new AutoAttendance)->dailyAt('10.00');
+        $schedule->job(new AutoAttendance)->cron('43 11 * * *');
     }
 
     /**
